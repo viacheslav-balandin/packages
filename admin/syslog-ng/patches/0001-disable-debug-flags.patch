@@ -1,0 +1,32 @@
+diff --git a/configure b/configure
+index 1614d4c..82ad705 100755
+--- a/configure
++++ b/configure
+@@ -16852,9 +16852,9 @@ if test "x$ac_compiler_gnu" = "xyes"; then
+ 
+ 	CFLAGS_ADD=""
+         if test "x$enable_debug" = "xyes"; then
+-                CFLAGS_ADD="${CFLAGS_ADD} -g"
++                CFLAGS_ADD="${CFLAGS_ADD}"
+         else
+-                CFLAGS_ADD="${CFLAGS_ADD} -O2 -g"
++                CFLAGS_ADD="${CFLAGS_ADD} -O2"
+         fi
+         if test "x$enable_gprof" = "xyes"; then
+                 CFLAGS_ADD="${CFLAGS_ADD} -pg"
+diff --git a/configure.ac b/configure.ac
+index ca9c791..10de6eb 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -523,9 +523,9 @@ if test "x$ac_compiler_gnu" = "xyes"; then
+ 
+ 	CFLAGS_ADD=""
+         if test "x$enable_debug" = "xyes"; then
+-                CFLAGS_ADD="${CFLAGS_ADD} -g"
++                CFLAGS_ADD="${CFLAGS_ADD}"
+         else
+-                CFLAGS_ADD="${CFLAGS_ADD} -O2 -g"
++                CFLAGS_ADD="${CFLAGS_ADD} -O2"
+         fi
+         if test "x$enable_gprof" = "xyes"; then
+                 CFLAGS_ADD="${CFLAGS_ADD} -pg"

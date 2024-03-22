@@ -61,7 +61,7 @@ endef
 define Package/ddns-scripts-cloudflare
   $(call Package/ddns-scripts/Default)
   TITLE:=Extension for cloudflare.com API v4
-  DEPENDS:=ddns-scripts +curl
+  DEPENDS:=ddns-scripts
   PROVIDES:=ddns-scripts_cloudflare.com-v4
 endef
 
@@ -73,7 +73,7 @@ endef
 define Package/ddns-scripts-freedns
   $(call Package/ddns-scripts/Default)
   TITLE:=Extension for freedns.42.pl
-  DEPENDS:=ddns-scripts +curl
+  DEPENDS:=ddns-scripts
   PROVIDES:=ddns-scripts_freedns_42_pl
 endef
 
@@ -85,7 +85,7 @@ endef
 define Package/ddns-scripts-godaddy
   $(call Package/ddns-scripts/Default)
   TITLE:=Extension for godaddy.com API v1
-  DEPENDS:=ddns-scripts +curl
+  DEPENDS:=ddns-scripts
   PROVIDES:=ddns-scripts_godaddy.com-v1
 endef
 

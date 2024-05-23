@@ -1,0 +1,36 @@
+diff --git a/upnpredirect.c b/upnpredirect.c
+index 07fa229..60c84b8 100644
+--- a/upnpredirect.c
++++ b/upnpredirect.c
+@@ -549,6 +549,22 @@ upnp_get_redirection_infos_by_index(int index,
+ 	}
+ }
+ 
++void
++_upnp_notify_delete_redir(unsigned short eport, int proto)
++{
++	int ret = 0;
++	char cmd[256] = {};
++	snprintf(cmd, 256,
++		"ubus call UPnP notify_upnp_mapping_deleted '{\"external_port\":\"%d\",\"protocol\":\"%d\"}' 2>&1 > /dev/null",
++		eport, proto);
++
++	ret = system(cmd);
++
++	if (ret == -1 || WIFEXITED(ret) && WEXITSTATUS(ret) != 0) {
++		syslog(LOG_ERR, "system() failed to notify_upnp_mapping_deleted: external_port=%d, protocol=%d", eport, proto);
++	}
++}
++
+ /* called from natpmp.c too */
+ int
+ _upnp_delete_redir(unsigned short eport, int proto)
+@@ -566,6 +582,8 @@ _upnp_delete_redir(unsigned short eport, int proto)
+ 	lease_file_remove( eport, proto);
+ #endif
+ 
++	_upnp_notify_delete_redir(eport, proto);
++
+ #ifdef ENABLE_EVENTS
+ 	upnp_event_var_change_notify(EWanIPC);
+ #endif

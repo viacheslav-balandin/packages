@@ -96,6 +96,7 @@ define Package/libcurl
   DEPENDS:= +LIBCURL_WOLFSSL:libwolfssl +LIBCURL_OPENSSL:libopenssl +LIBCURL_GNUTLS:libgnutls +LIBCURL_MBEDTLS:libmbedtls
   DEPENDS += +LIBCURL_ZLIB:zlib +LIBCURL_ZSTD:libzstd +LIBCURL_THREADED_RESOLVER:libpthread +LIBCURL_LDAP:libopenldap
   DEPENDS += +LIBCURL_LIBIDN2:libidn2 +LIBCURL_SSH2:libssh2 +LIBCURL_NGHTTP2:libnghttp2 +ca-bundle
+  DEPENDS += +LIBCURL_CARES:libcares
   TITLE:=A client-side URL transfer library
   MENU:=1
   ABI_VERSION:=4
@@ -111,7 +112,7 @@ TARGET_LDFLAGS += -Wl,--gc-sections
 
 CONFIGURE_ARGS += \
 	--disable-debug \
-	--disable-ares \
+	$(if $(CONFIG_LIBCURL_CARES),--enable-ares,--disable-ares) \
 	--enable-shared \
 	--enable-static \
 	--disable-manual \

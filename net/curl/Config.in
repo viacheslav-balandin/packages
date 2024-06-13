@@ -123,6 +123,10 @@ config LIBCURL_LIBIDN2
 	bool "Enable IDN2 support"
 	default n
 
+config LIBCURL_CARES
+	bool "Enable c-ares for DNS lookups"
+	default n
+
 config LIBCURL_THREADED_RESOLVER
 	bool "Enable threaded DNS resolver"
 	default n
